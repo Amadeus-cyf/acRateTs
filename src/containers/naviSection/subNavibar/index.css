@@ -1,0 +1,13 @@
+.subnaviStyle {
+    position: relative;
+    margin: 0 auto;
+    width : 50%;
+    height: 30px;
+    top: 100px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.titleStyle:hover {
+    cursor: pointer;
+    color: rgba(255, 120, 195, 1);
+}
