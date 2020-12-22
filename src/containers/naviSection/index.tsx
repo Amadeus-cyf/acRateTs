@@ -4,7 +4,6 @@ import Searchbar from '../../components/searchbar';
 import SubNavibar from './subNavibar';
 import './index.css';
 import UserType from '../../interface/UserType';
-import InitialUser from '../../const/initialUser';
 
 const searchbarStyle = {
     position: 'relative',
@@ -20,7 +19,7 @@ type NaviProps = {
     user: UserType,
 }
 
-const NaviSection = ( props : NaviProps ) => {
+const NaviSection = ( props : NaviProps ) : JSX.Element => {
     const { currentTab, user } = props
 
     return (

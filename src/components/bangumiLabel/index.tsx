@@ -19,9 +19,9 @@ const titleStyle = {
     textAlign: 'center',
 }
 
-export default function bangumiLabel(props : BangumiBriefType) {
+const bangumiLabel = (props : BangumiBriefType) : JSX.Element => {
     const {title, image_url, width} = props;
-    
+
     const labelStyle = {
         width: width,
         height: 'auto',
@@ -29,7 +29,7 @@ export default function bangumiLabel(props : BangumiBriefType) {
         background: 'rgba(255, 255, 255, 0)',
         margin: 0,
     }
-
+    
     const titleBrief = title.length > 30 ? (title.substring(0, 30) + '...') : title;
     
     return (
@@ -39,3 +39,5 @@ export default function bangumiLabel(props : BangumiBriefType) {
         </Label>
     )
 }
+
+export default bangumiLabel;

@@ -11,9 +11,8 @@ const labelStyle = {
     justifyContent: 'flex-start',
 }
 
-export default function rankLabel(props : BangumiRankType) {
+const rankLabel = (props : BangumiRankType) => {
     const { bangumiInfo, rankNumber } = props;
-
     const titleBrief : string = bangumiInfo.title.length <= 30 
     ? bangumiInfo.title : bangumiInfo.title.substring(0, 30) + '...';
 
@@ -26,3 +25,5 @@ export default function rankLabel(props : BangumiRankType) {
         </Label>
     )
 }
+
+export default rankLabel;

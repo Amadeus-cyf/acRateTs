@@ -6,7 +6,7 @@ type PropsType = {
     onPageClicked : (pageNum : number) => void,
 }
 
-export default function pageButton(props : PropsType) {
+const pageButton = (props : PropsType) : JSX.Element => {
     const { pageNum, onPageClicked } = props;
     
     const clickListener = () : void => {
@@ -18,3 +18,5 @@ export default function pageButton(props : PropsType) {
         color = 'blue' onClick = { clickListener } size = 'tiny'> { pageNum } </Button>
     )
 }
+
+export default pageButton;

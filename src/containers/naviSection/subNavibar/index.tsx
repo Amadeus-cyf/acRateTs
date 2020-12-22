@@ -26,7 +26,7 @@ interface PropsType extends RouteComponentProps {
     currentTab: string,
 }
 
-const SubNavibar = (props : PropsType) => {
+const SubNavibar = (props : PropsType) : JSX.Element => {
     const { currentTab } = props;
 
     const onTitleClick = (event : any) : void => {

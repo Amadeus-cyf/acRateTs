@@ -34,19 +34,19 @@ class Login extends React.Component<RouteComponentProps, LoginState> {
         
     }
     
-    private emailHandler(event : React.ChangeEvent<HTMLInputElement>) {
+    private emailHandler(event : React.ChangeEvent<HTMLInputElement>) : void {
         this.setState({
             email: event.target.value,
         })
     }
 
-    private passwordHandler(event : React.ChangeEvent<HTMLInputElement>) {
+    private passwordHandler(event : React.ChangeEvent<HTMLInputElement>) : void {
         this.setState({
             password: event.target.value,
         })
     }
 
-    private formloginHandler() {
+    private formloginHandler() : void {
        AuthApi.login(this.state.email, this.state.password)
        .then(res => {
             if (res.data.message === 'Successfully Login') {

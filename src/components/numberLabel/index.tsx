@@ -8,7 +8,7 @@ type NumberLabelType = {
     height: number,
 }
 
-export default function numberLabel(props : NumberLabelType) {
+const  numberLabel = (props : NumberLabelType) : JSX.Element => {
     const { rank, width, height } = props;
 
     const labelStyle = {
@@ -27,3 +27,5 @@ export default function numberLabel(props : NumberLabelType) {
         </Label>
     )
 }
+
+export default numberLabel;

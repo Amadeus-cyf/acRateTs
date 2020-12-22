@@ -1,44 +1,27 @@
 import React from 'react';
+import PageList from '../../utils/pageList';
 import PageButton from '../pageButton';
 import './index.css'
 
 interface PropsType {
-    pageNumber: number,
+    pageList: PageList | null,
     onPageClicked: (page : number) => void,
 }
 
-export default function pageNavigator(props : PropsType) {
-    const { pageNumber, onPageClicked } = props;
-    const mid : number = Math.floor(pageNumber/2);
+const pageNavigator = (props : PropsType) : JSX.Element => {
+    const { pageList, onPageClicked } = props;
 
-    let numList = [];
-    if (pageNumber <= 10) {
-        for (let i = 0; i < pageNumber; i++) {
-            numList.push(i+1);
-        }
-    } else {
-        for (let i = 1; i <= 3; i++) {
-            numList.push(i);
-        }
-        for (let i = mid - 2; i <= mid + 2; i++) {
-            numList.push(i);
-        }
-        for (let i = pageNumber - 2; i <= pageNumber; i++) {
-            numList.push(i);
-        }
-    }
-
-    const navigatorView : Array<JSX.Element> = numList.map((num) => {
-        if (num === 3 || num === mid + 2) {
+    const navigatorView : Array<JSX.Element> | undefined = pageList?.pages.map((num, idx) => {
+        if (idx > 0 && num - pageList.pages[idx-1] !== 1) {
             return (
                 <>
-                    <PageButton pageNum = { num } onPageClicked = { onPageClicked }/>
                     <span className = 'ellipsisStyle'>...</span>
+                    <PageButton pageNum = { num } onPageClicked = { onPageClicked }/>
                 </>
             )
         }
         return <PageButton pageNum = { num } onPageClicked = { onPageClicked }/>
-    })
+    });
 
     return(
         <>
@@ -46,3 +29,5 @@ export default function pageNavigator(props : PropsType) {
         </>
     )
 } 
+
+export default pageNavigator;
