@@ -18,8 +18,7 @@ const tabRouteMap : MapType = {
 const subnaviStyle = {
     display: 'flex',
     flexWrap: 'nowrap',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
+    justifyContent: 'center',
 }
 
 interface PropsType extends RouteComponentProps {
@@ -40,28 +39,28 @@ const SubNavibar = (props : PropsType) : JSX.Element => {
                 name = '主页'
                 className = 'titleStyle'
                 active = { currentTab === '主页' }
-                style = { { color: currentTab === '主页' ? Color.PINK : Color.WHITE } }
+                style = { { color: currentTab === '主页' ? Color.PINK : Color.WHITE, marginLeft: '30px' } }
                 onClick = { onTitleClick }
                 />
                 <Menu.Item
                 name = '番剧'
                 className = 'titleStyle'
                 active = {currentTab === '番剧'}
-                style={ { color: currentTab === '番剧' ? Color.PINK : Color.WHITE } }
+                style={ { color: currentTab === '番剧' ? Color.PINK : Color.WHITE, marginLeft: '30px' } }
                 onClick = { onTitleClick }
                 />
                 <Menu.Item
                 name='时间表'
                 className = 'titleStyle'
                 active = { currentTab === '时间表' }
-                style = { { color: currentTab === '时间表' ? Color.PINK : Color.WHITE } }
+                style = { { color: currentTab === '时间表' ? Color.PINK : Color.WHITE, marginLeft: '30px' } }
                 onClick = { onTitleClick }
                 />
                 <Menu.Item
                 name = '排行榜'
                 className = 'titleStyle'
                 active = { currentTab === '排行榜' }
-                style = { { color: currentTab === '排行榜' ? Color.PINK : Color.WHITE } }
+                style = { { color: currentTab === '排行榜' ? Color.PINK : Color.WHITE, marginLeft: '30px' } }
                 onClick = { onTitleClick }
                 />
             </Menu>
