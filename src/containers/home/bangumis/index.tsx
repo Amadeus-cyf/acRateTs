@@ -46,8 +46,9 @@ class Bangumis extends React.Component<BangumiSeasonType, BangumisState> {
     public render() : JSX.Element {
         const { season, month, year } = this.props;
         const bangumiLabels : Array<JSX.Element> = Array.from(this.state.bangumis).map((bangumi : BangumiType) => {
-            return (<BangumiLabel title = { bangumi.title } image_url = { bangumi.image_url } 
-                width = '33%'/>);
+            return (
+                <BangumiLabel title = { bangumi.title } image_url = { bangumi.image_url } width = '33%'/>
+            );
         });
     
         return(
