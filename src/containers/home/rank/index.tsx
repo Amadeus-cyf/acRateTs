@@ -1,7 +1,7 @@
 import React from 'react';
 import { Label, Header, Divider } from 'semantic-ui-react';
 import RankLabel from '../../../components/rankLabel';
-import { BangumiBriefScoreType } from '../../../typings/BangumiBriefScoreType';
+import { BangumiBriefScoreType } from '../../../interface/BangumiBriefScoreType';
 import BangumiListApi from '../../../api/BangumiListApi';
 
 const labelStyle = {

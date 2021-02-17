@@ -3,7 +3,7 @@ import Navibar from '../../components/navibar';
 import Searchbar from '../../components/searchbar';
 import SubNavibar from './subNavibar';
 import './index.css';
-import { UserType } from '../../typings/UserType';
+import { UserType } from '../../interface/UserType';
 
 const searchbarStyle = {
     position: 'relative',
@@ -16,16 +16,15 @@ const searchbarStyle = {
 
 type NaviProps = {
     currentTab: string,
-    user: UserType,
 }
 
 const NaviSection = ( props : NaviProps ) : JSX.Element => {
-    const { currentTab, user } = props
+    const { currentTab } = props
 
     return (
         <div className = 'sectionStyle'>
             <div className = 'navibarStyle'>
-                <Navibar user = { user } />
+                <Navibar/>
                 <Searchbar searchbarStyle = {searchbarStyle}/>
             </div>
             <SubNavibar currentTab = { currentTab }/>

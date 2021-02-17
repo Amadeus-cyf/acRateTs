@@ -7,7 +7,7 @@ import { Button, Form } from 'semantic-ui-react';
 import { style } from './style';
 import './index.css';
 import AuthApi from '../../api/AuthApi';
-import { UserType } from '../../typings/UserType';
+import { UserType } from '../../interface/UserType';
 
 type ErrorDisplayType =  'none' | 'inline' | 'block';
 

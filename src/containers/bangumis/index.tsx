@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import mapStateToProps from '../../utils/mapStateToProps';
-import { BangumiType } from '../../typings/BangumiType';
+import { BangumiType } from '../../interface/BangumiType';
 import BangumiLabel from '../../components/bangumiLabel';
 import NaviSection from '../naviSection';
 import PageNavigator from '../../components/pageNavigator';
 import BangumiListApi from '../../api/BangumiListApi';
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from '../../const/window_size_threshold';
 import './index.css';  
-import InitialUser from '../../const/initialUser';
 import PageList from '../../model/pageList';
 
 interface BangumisState {
@@ -74,7 +73,7 @@ class BangumisView extends React.Component<{}, BangumisState> {
 
         return (
             <div className = 'mainStyle'>
-                <NaviSection currentTab = '番剧' user = {InitialUser}/>
+                <NaviSection currentTab = '番剧'/>
                 <div className = 'bangumilistStyle' style = {{width: this.state.bangumiSectionWidth}}>
                     { this.state.bangumis.length > 0 ? bangumiPageView :  loadingView }
                 </div>

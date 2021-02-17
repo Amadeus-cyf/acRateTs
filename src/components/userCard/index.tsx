@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Image, Header, Card, Icon } from 'semantic-ui-react';
 import avatar from '../../assets/avatar.jpeg';
 import background from '../../assets/background.jpeg';
-import { UserType } from '../../typings/UserType';
+import { UserType } from '../../interface/UserType';
 import './index.css';
 import { cardStyle } from './style';
 
@@ -31,4 +31,4 @@ const userCard = (props : UserCardProps) => {
     )
 }
 
-export default userCard;
+export default  memo(userCard);

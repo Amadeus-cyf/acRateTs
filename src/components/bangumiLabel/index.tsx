@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Label, Image, Header } from 'semantic-ui-react';
 import './index.css';
 
@@ -40,4 +40,4 @@ const bangumiLabel = (props : BangumiBriefType) : JSX.Element => {
     )
 }
 
-export default bangumiLabel;
+export default memo(bangumiLabel);
