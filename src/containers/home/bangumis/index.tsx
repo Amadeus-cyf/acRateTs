@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, Divider } from 'semantic-ui-react';
-import BangumiType from '../../../interface/BangumiType';
-import BangumiSeasonType from '../../../interface/BangumiSeasonType';
+import { BangumiType } from '../../../typings/BangumiType';
+import { BangumiSeasonType } from '../../../typings/BangumiSeasonType';
 import BangumiLabel from '../../../components/bangumiLabel';
 import BangumiApi from '../../../api/BangumiApi';
 import './index.css';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import mapStateToProps from '../../utils/mapStateToProps';
-import BangumiType from '../../interface/BangumiType';
+import { BangumiType } from '../../typings/BangumiType';
 import BangumiLabel from '../../components/bangumiLabel';
 import NaviSection from '../naviSection';
 import PageNavigator from '../../components/pageNavigator';
@@ -9,7 +9,7 @@ import BangumiListApi from '../../api/BangumiListApi';
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from '../../const/window_size_threshold';
 import './index.css';  
 import InitialUser from '../../const/initialUser';
-import PageList from '../../utils/pageList';
+import PageList from '../../model/pageList';
 
 interface BangumisState {
     bangumis: Array<BangumiType>,

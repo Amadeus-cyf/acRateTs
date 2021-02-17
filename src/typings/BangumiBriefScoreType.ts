@@ -1,4 +1,4 @@
-export default interface BangumiBriefScoreType {
+export interface BangumiBriefScoreType {
     anime_id: string,
     image_url: string,
     title: string,

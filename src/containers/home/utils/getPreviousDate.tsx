@@ -1,4 +1,4 @@
-import BangumiSeasonType from "../../../interface/BangumiSeasonType";
+import { BangumiSeasonType } from "../../../typings/BangumiSeasonType";
 
 export default function getPreviousDate() : BangumiSeasonType {
     let date = new Date();

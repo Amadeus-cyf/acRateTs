@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu, Image } from 'semantic-ui-react';
 import avatar from '../../assets/avatar.jpeg';
-import UserType from '../../interface/UserType';
+import { UserType } from '../../typings/UserType';
 
 interface NavibarProps { 
     user: UserType,

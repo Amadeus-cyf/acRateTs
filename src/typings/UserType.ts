@@ -1,4 +1,4 @@
-export default interface UserType {
+export interface UserType {
     _id: String,
     username: String,
     email: String,

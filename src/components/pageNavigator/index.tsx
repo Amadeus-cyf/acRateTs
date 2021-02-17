@@ -1,5 +1,5 @@
 import React from 'react';
-import PageList from '../../utils/pageList';
+import PageList from '../../model/pageList';
 import PageButton from '../pageButton';
 import './index.css'
 

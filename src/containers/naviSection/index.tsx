@@ -3,7 +3,7 @@ import Navibar from '../../components/navibar';
 import Searchbar from '../../components/searchbar';
 import SubNavibar from './subNavibar';
 import './index.css';
-import UserType from '../../interface/UserType';
+import { UserType } from '../../typings/UserType';
 
 const searchbarStyle = {
     position: 'relative',

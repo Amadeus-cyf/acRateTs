@@ -1,5 +1,5 @@
-import UserType from '../interface/UserType';
-import ActionType from "../interface/ActionType";
+import { UserType } from '../typings/UserType';
+import { ActionType } from "../typings/ActionType";
 import InitialUser from '../const/initialUser';
 
 export const setUser = (user : UserType) : ActionType => {

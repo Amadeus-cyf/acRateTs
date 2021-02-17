@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Header, Card, Icon } from 'semantic-ui-react';
 import avatar from '../../assets/avatar.jpeg';
 import background from '../../assets/background.jpeg';
-import UserType from '../../interface/UserType';
+import { UserType } from '../../typings/UserType';
 import './index.css';
 import { cardStyle } from './style';
 

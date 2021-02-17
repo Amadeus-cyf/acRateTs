@@ -2,7 +2,7 @@ import React from 'react';
 import { Label } from 'semantic-ui-react';
 import NumberLabel from '../numberLabel';
 import './index.css';
-import BangumiRankType from '../../interface/BangumiRankType';
+import { BangumiRankType } from '../../typings/BangumiRankType';
 
 const labelStyle = {
     width: '100%',

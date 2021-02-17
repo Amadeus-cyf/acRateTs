@@ -1,6 +1,6 @@
-import ActionType from '../../interface/ActionType';
+import { ActionType } from '../../typings/ActionType';
 import initialUser from '../../const/initialUser';
-import UserType from '../../interface/UserType';
+import { UserType } from '../../typings/UserType';
 
 export default function userReducer(state = { user: initialUser }, action : ActionType) : UserType {
     switch(action.type) {

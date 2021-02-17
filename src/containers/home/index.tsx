@@ -6,13 +6,13 @@ import { setUser } from '../../store/action';
 import Bangumis from '../home/bangumis';
 import UserCard from '../../components/userCard';
 import NaviSection from '../naviSection';
-import BangumiSeasonType from "../../interface/BangumiSeasonType";
+import { BangumiSeasonType } from "../../typings/BangumiSeasonType";
 import getCurrentDate from './utils/getCurrentDate';
 import getPreviousDate from './utils/getPreviousDate';
 import RankSection from './rank';
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from '../../const/window_size_threshold';
 import './index.css';
-import UserType from '../../interface/UserType';
+import { UserType } from '../../typings/UserType';
 
 interface HomeState {
     visibility: string,

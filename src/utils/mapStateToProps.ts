@@ -1,4 +1,4 @@
-import StateType from '../interface/StateType';
+import { StateType } from '../typings/StateType';
 
 const mapStateToProps = (state : StateType)  => {
     return {

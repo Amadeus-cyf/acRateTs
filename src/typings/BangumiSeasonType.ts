@@ -1,4 +1,4 @@
-export default interface BangumiSeasonType {
+export interface BangumiSeasonType {
     season: string,
     year: number,
     month: number,
