@@ -43,7 +43,7 @@ class RankSection extends React.Component<{}, RankSectionState> {
 
     public render() : JSX.Element {
         const bangumiListView : Array<JSX.Element>= Array.from(this.state.bangumis).map((bangumi : BangumiBriefScoreType, index : number) => {
-            return (<RankLabel bangumiInfo = { bangumi } rankNumber = { index + 1 }/>);
+            return (<RankLabel key = { `${bangumi.anime_id}-${index+1}` } bangumiInfo = { bangumi } rankNumber = { index + 1 }/>);
         });
         return (
             <Label style = { labelStyle }>

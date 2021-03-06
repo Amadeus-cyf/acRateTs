@@ -32,7 +32,7 @@ class Bangumis extends React.Component<BangumiSeasonType, BangumisState> {
 
     public componentDidMount() : void {
         const limit = 6;
-        const { season, month, year } = this.props;
+        const { season, year } = this.props;
         BangumiApi.getBangumiBySeasonWithLimit(year, season, limit)
         .then(res => {
             this.setState({
@@ -44,10 +44,11 @@ class Bangumis extends React.Component<BangumiSeasonType, BangumisState> {
     }
 
     public render() : JSX.Element {
-        const { season, month, year } = this.props;
+        const { month, year } = this.props;
         const bangumiLabels : Array<JSX.Element> = Array.from(this.state.bangumis).map((bangumi : BangumiType) => {
             return (
-                <BangumiLabel title = { bangumi.title } image_url = { bangumi.image_url } width = '33%'/>
+                <BangumiLabel key = {bangumi.anime_id} anime_id = { bangumi.anime_id } title = { bangumi.title } 
+                image_url = { bangumi.image_url } width = '33%'/>
             );
         });
     

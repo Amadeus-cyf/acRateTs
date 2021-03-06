@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PageList from '../../model/pageList';
 import PageButton from '../pageButton';
+
 import './index.css'
 
 interface PropsType {
@@ -14,13 +15,13 @@ const pageNavigator = (props : PropsType) : JSX.Element => {
     const navigatorView : Array<JSX.Element> | undefined = pageList?.pages.map((num, idx) => {
         if (idx > 0 && num - pageList.pages[idx-1] !== 1) {
             return (
-                <>
+                <div key={ num }>
                     <span className = 'ellipsisStyle'>...</span>
                     <PageButton pageNum = { num } onPageClicked = { onPageClicked }/>
-                </>
+                </div>
             )
         }
-        return <PageButton pageNum = { num } onPageClicked = { onPageClicked }/>
+        return <PageButton key={ num } pageNum = { num } onPageClicked = { onPageClicked }/>
     });
 
     return(
@@ -30,4 +31,6 @@ const pageNavigator = (props : PropsType) : JSX.Element => {
     )
 } 
 
-export default pageNavigator;
+export default memo(pageNavigator, (prevProps: PropsType, props : PropsType) : boolean => {
+    return prevProps.pageList === props.pageList
+});

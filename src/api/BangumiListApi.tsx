@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 
 class BangumiListApi {
     static getBangumiWithPagingOrderByDate(page : number, order : 1 | -1) : Promise<AxiosResponse<any>> {
-        return axios.get('api/bangumiList/date/' + + page + '/order/' + order);
+        return axios.get(`api/bangumiList/date/${page}/order/${order}`);
     }
 
     static getBangumiCount() : Promise<AxiosResponse<any>> {
@@ -10,7 +10,7 @@ class BangumiListApi {
     }
 
     static getBangumiRank(rankNumber : number) : Promise<AxiosResponse<any>> {
-        return axios.get('api/bangumiList/rank/' + rankNumber);
+        return axios.get(`api/bangumiList/rank/${rankNumber}`);
     }
 }
 

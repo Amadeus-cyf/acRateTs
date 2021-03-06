@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import mapStateToProps from '../../utils/mapStateToProps';
 import { BangumiType } from '../../interface/BangumiType';
 import BangumiLabel from '../../components/bangumiLabel';
 import NaviSection from '../naviSection';
@@ -66,7 +64,8 @@ class BangumisView extends React.Component<{}, BangumisState> {
 
     public render() : JSX.Element {
         const bangumiPageView : Array<JSX.Element> = this.state.bangumis.map(bangumi => {
-            return <BangumiLabel title = {bangumi.title} image_url = {bangumi.image_url} width = '25%'/>
+            return <BangumiLabel key={bangumi.anime_id} anime_id = { bangumi.anime_id } title = { bangumi.title } 
+            image_url = { bangumi.image_url } width = '25%'/>
         })
 
         const loadingView : JSX.Element = <div>loading</div>
@@ -103,4 +102,4 @@ class BangumisView extends React.Component<{}, BangumisState> {
     }
 }
 
-export default connect(mapStateToProps)(BangumisView);
+export default BangumisView;

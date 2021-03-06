@@ -1,14 +1,14 @@
-import React from 'react';
+import { memo } from 'react';
 import { Label } from 'semantic-ui-react';
 import './index.css';
 
-type NumberLabelType = {
+type PropsType = {
     rank : number,
     width: number,
     height: number,
 }
 
-const  numberLabel = (props : NumberLabelType) : JSX.Element => {
+const numberLabel = (props : PropsType) : JSX.Element => {
     const { rank, width, height } = props;
 
     const labelStyle = {
@@ -28,4 +28,4 @@ const  numberLabel = (props : NumberLabelType) : JSX.Element => {
     )
 }
 
-export default numberLabel;
+export default memo(numberLabel);

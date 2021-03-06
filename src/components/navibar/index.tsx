@@ -1,19 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Menu, Image } from 'semantic-ui-react';
-import store from '../../store'
-import { setUser } from '../../store/action';
+import store from '../../store';
+import mapStateToProps from '../../utils/mapStateToProps';
+import { mapUserDispatchToProps } from '../../utils/mapDispatchToProps';
 import avatar from '../../assets/avatar.jpeg';
 import { UserType } from '../../interface/UserType';
+import { ActionType } from '../../interface/ActionType';
+import { ACTION } from '../../const/actions';
+import { Dispatch } from 'redux';
 
 interface StateType {
     user: UserType,
 }
 
-class navibar extends React.PureComponent<{}, StateType> {
-    public constructor(props : {}) {
+interface PropsType {
+    user: UserType,
+    setUser: (user : UserType) => ActionType,
+}
+
+class Navibar extends React.PureComponent<PropsType, StateType> {
+    public constructor(props : PropsType) {
         super(props);
         this.state = {
-            user: store.getState().user,
+            user: props.user,
         }
     }
 
@@ -21,8 +31,8 @@ class navibar extends React.PureComponent<{}, StateType> {
         if (this.state.user._id === "") {
             // handle page refreshing
             if (localStorage.getItem("user") !== null) {
-                const userData  = JSON.parse(localStorage.getItem("user")!);
-                store.dispatch(setUser(userData));
+                const userData : UserType  = JSON.parse(localStorage.getItem("user")!);
+                this.props.setUser(userData);
                 this.setState({
                     user: userData,
                 })
@@ -58,8 +68,14 @@ class navibar extends React.PureComponent<{}, StateType> {
                 />
             </Menu>
         )
-
     }
 }
 
-export default navibar;
+const mapDispatchToProps = (dispatch : Dispatch<ActionType>) => ({
+    setUser: mapUserDispatchToProps(dispatch, ACTION.SET_USER),
+})
+
+export default connect(
+    mapStateToProps, 
+    mapDispatchToProps
+)(Navibar);

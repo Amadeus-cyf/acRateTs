@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Label } from 'semantic-ui-react';
 import NumberLabel from '../numberLabel';
+import { deepCompare } from '../../utils/deepCompare';
 import './index.css';
 import { BangumiRankType } from '../../interface/BangumiRankType';
 
@@ -17,7 +18,7 @@ const rankLabel = (props : BangumiRankType) => {
     ? bangumiInfo.title : bangumiInfo.title.substring(0, 30) + '...';
 
     return (
-        <Label style = { labelStyle }>
+        <Label style = { labelStyle } key = { rankNumber }>
             <NumberLabel rank = { rankNumber } width = { 20 } height = { 27 }/>
             <p className = 'titleStyle'> { titleBrief } </p>
             <p className = 'scoreStyle'> { bangumiInfo.score + ' 分' } </p>
@@ -26,4 +27,7 @@ const rankLabel = (props : BangumiRankType) => {
     )
 }
 
-export default rankLabel;
+export default memo(rankLabel, (prevProps : BangumiRankType, props : BangumiRankType) : boolean => {
+    return deepCompare(prevProps.bangumiInfo, props.bangumiInfo) 
+    && (prevProps.rankNumber === props.rankNumber);
+});

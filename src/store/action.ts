@@ -5,7 +5,7 @@ import InitialUser from '../const/initialUser';
 export const setUser = (user : UserType) : ActionType => {
     return (
         {
-            type: "GET_USER",
+            type: 'GET_USER',
             payload: user,
         }
     )
@@ -14,7 +14,7 @@ export const setUser = (user : UserType) : ActionType => {
 export const clearUser = () : ActionType => {
     return (
         {
-            type: "DELETE_USER",
+            type: 'DELETE_USER',
             payload: InitialUser,
         }
     )
@@ -23,7 +23,7 @@ export const clearUser = () : ActionType => {
 export const error = () : ActionType => {
     return (
         {
-            type: "ERROR",
+            type: 'ERROR',
             payload: InitialUser,
         }
     )

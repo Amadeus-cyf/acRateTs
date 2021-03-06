@@ -1,5 +1,6 @@
-import React from 'react';
+import { memo } from 'react';
 import { Input } from 'semantic-ui-react';
+import { deepCompare } from '../../utils/deepCompare';
 
 const searchbar = (props : any) : JSX.Element => {
     const { searchbarStyle } = props;
@@ -9,4 +10,6 @@ const searchbar = (props : any) : JSX.Element => {
     )
 }
 
-export default searchbar;
+export default memo(searchbar, (prevProps, props) => {
+    return deepCompare(prevProps.searchbarStyle, props.searchbarStyle);
+});

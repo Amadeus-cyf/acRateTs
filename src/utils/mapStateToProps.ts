@@ -1,9 +1,7 @@
 import { StateType } from '../interface/StateType';
 
-const mapStateToProps = (state : StateType)  => {
-    return {
-        user: state.user,
-    }
-}
+const mapStateToProps = (state : StateType)  => ({ 
+    user : state.user 
+});
 
 export default mapStateToProps;

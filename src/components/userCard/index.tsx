@@ -3,16 +3,17 @@ import { Image, Header, Card, Icon } from 'semantic-ui-react';
 import avatar from '../../assets/avatar.jpeg';
 import background from '../../assets/background.jpeg';
 import { UserType } from '../../interface/UserType';
+import { deepCompare } from '../../utils/deepCompare';
 import './index.css';
 import { cardStyle } from './style';
 
-interface UserCardProps {
+interface PropsType {
     user: UserType,
 }
 
-const userCard = (props : UserCardProps) => { 
-    const userAvatar : String = props.user.avatar === "" ? avatar : props.user.avatar;
-    const userName : String = props.user.username === "" ? "未登陆" : props.user.username;
+const userCard = (props : PropsType) => { 
+    const userAvatar : String = props.user.avatar === '' ? avatar : props.user.avatar;
+    const userName : String = props.user.username === '' ? '未登陆' : props.user.username;
     const followerNum : Number = props.user.follower;
     const followingNum : Number = props.user.following;
 
@@ -31,4 +32,7 @@ const userCard = (props : UserCardProps) => {
     )
 }
 
-export default  memo(userCard);
+export default memo(userCard, (prevProps : PropsType, props : PropsType) => {
+    console.log(deepCompare(prevProps.user, props.user))
+    return deepCompare(prevProps.user, props.user);
+});

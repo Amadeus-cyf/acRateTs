@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import store from '../../store';
 import mapStateToProps from '../../utils/mapStateToProps';
 import Bangumis from '../home/bangumis';
 import UserCard from '../../components/userCard';
@@ -11,17 +10,22 @@ import getPreviousDate from './utils/getPreviousDate';
 import RankSection from './rank';
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from '../../const/window_size_threshold';
 import './index.css';
+import { UserType } from '../../interface/UserType';
 
 interface HomeState {
     visibility: string,
     bangumiSectionWidth: string,
 }
 
-class Home extends React.Component<{}, HomeState> {
+interface HomeProps {
+    user: UserType,
+}
+
+class Home extends React.Component<HomeProps, HomeState> {
     private currentSeason : BangumiSeasonType = getCurrentDate();
     private previousSeason : BangumiSeasonType = getPreviousDate();
 
-    public constructor(props : {}) {
+    public constructor(props : HomeProps) {
         super(props);
         this.state = {
             visibility: window.innerWidth < USER_CARD_VISIBLE_MIN_WINDOW_SIZE ? 'none' : 'block',
@@ -47,6 +51,8 @@ class Home extends React.Component<{}, HomeState> {
     }
 
     public render() : JSX.Element {
+        const { user } = this.props;
+       
         return (
             <div>
                 <NaviSection currentTab = '主页' />
@@ -61,7 +67,7 @@ class Home extends React.Component<{}, HomeState> {
                             season = { this.previousSeason.season } />
                     </div>
                     <div className = 'leftSectionStyle' style = {{display: this.state.visibility}} >
-                        <UserCard user = { store.getState().user }/>
+                        <UserCard user = { user }/>
                         <RankSection />
                     </div>
                 </div>

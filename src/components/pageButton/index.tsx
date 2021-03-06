@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { Button } from 'semantic-ui-react';
 
 type PropsType = {
@@ -19,4 +19,6 @@ const pageButton = (props : PropsType) : JSX.Element => {
     )
 }
 
-export default pageButton;
+export default memo(pageButton, (prevProps : PropsType, props : PropsType) : boolean => {
+    return prevProps.pageNum === props.pageNum;
+});

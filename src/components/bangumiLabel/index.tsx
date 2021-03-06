@@ -3,6 +3,7 @@ import { Label, Image, Header } from 'semantic-ui-react';
 import './index.css';
 
 type BangumiBriefType = {
+    anime_id: string,
     image_url: string,
     title: string,
     width?: string,
