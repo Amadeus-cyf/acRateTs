@@ -15,7 +15,7 @@ const pageButton = (props : PropsType) : JSX.Element => {
 
     return (
         <Button style = {{ marginLeft: '5pt', marginRight: '5pt', marginTop: '3pt'}}
-        color = 'blue' onClick = { clickListener } size = 'tiny'> { pageNum } </Button>
+        color = 'blue' onClick = { clickListener } size = 'small'> { pageNum } </Button>
     )
 }
 

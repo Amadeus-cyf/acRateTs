@@ -6,14 +6,12 @@ import PageNavigator from '../../components/pageNavigator';
 import BangumiListApi from '../../api/BangumiListApi';
 import USER_CARD_VISIBLE_MIN_WINDOW_SIZE from '../../const/window_size_threshold';
 import './index.css';  
-import PageList from '../../model/pageList';
 
 interface BangumisState {
     bangumis: Array<BangumiType>,
     currentPage: number,
     pageNum: number,
     bangumiSectionWidth: string,
-    pageList: PageList | null,
 }
 
 class BangumisView extends React.Component<{}, BangumisState> {
@@ -24,7 +22,6 @@ class BangumisView extends React.Component<{}, BangumisState> {
             currentPage: 1,
             pageNum: 0,
             bangumiSectionWidth: '75%',
-            pageList: null,
         }
         this.onPageClicked = this.onPageClicked.bind(this);
     }
@@ -35,10 +32,9 @@ class BangumisView extends React.Component<{}, BangumisState> {
         BangumiListApi.getBangumiCount()
         .then(res => {
             let bangumiNumber : number = res.data.data.bangumiNumber;
-            let pageNumber = bangumiNumber % 24 === 0 ? bangumiNumber/24 : Math.floor(bangumiNumber/24 + 1);
+            const pageNumber = bangumiNumber % 24 === 0 ? bangumiNumber/24 : Math.floor(bangumiNumber/24 + 1);
             this.setState({
                 pageNum: pageNumber,
-                pageList: new PageList(pageNumber),
             })
         });
         window.onresize = () => {
@@ -56,7 +52,6 @@ class BangumisView extends React.Component<{}, BangumisState> {
         }
         const order = -1;
         this.fetchBangumiData(pageNum, order);
-        this.state.pageList?.onPageClicked(pageNum);
         this.setState({
             currentPage: pageNum,
         })
@@ -74,10 +69,10 @@ class BangumisView extends React.Component<{}, BangumisState> {
             <div className = 'mainStyle'>
                 <NaviSection currentTab = '番剧'/>
                 <div className = 'bangumilistStyle' style = {{width: this.state.bangumiSectionWidth}}>
-                    { this.state.bangumis.length > 0 ? bangumiPageView :  loadingView }
+                    { this.state.bangumis.length > 0 ? bangumiPageView : loadingView }
                 </div>
                 <div className = 'pageNavigatorStyle'>
-                    <PageNavigator pageList = { this.state.pageList } onPageClicked = { this.onPageClicked }/>
+                    { this.state.pageNum > 0 ? <PageNavigator page={ this.state.pageNum } onPageClicked = { this.onPageClicked }/> : null }
                 </div>
             </div>
         )
@@ -97,7 +92,7 @@ class BangumisView extends React.Component<{}, BangumisState> {
                alert("No bangumi found"); 
             }
         }).catch(err => {
-            alert(err);
+            console.log(err);
         })
     }
 }

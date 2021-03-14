@@ -1,36 +1,51 @@
-import React, { memo } from 'react';
+import React, { Component } from 'react';
 import PageList from '../../model/pageList';
 import PageButton from '../pageButton';
 
 import './index.css'
 
+interface StateType {
+    pageList: PageList,
+}
+
 interface PropsType {
-    pageList: PageList | null,
+    page: number,
     onPageClicked: (page : number) => void,
 }
 
-const pageNavigator = (props : PropsType) : JSX.Element => {
-    const { pageList, onPageClicked } = props;
-
-    const navigatorView : Array<JSX.Element> | undefined = pageList?.pages.map((num, idx) => {
-        if (idx > 0 && num - pageList.pages[idx-1] !== 1) {
-            return (
-                <div key={ num }>
-                    <span className = 'ellipsisStyle'>...</span>
-                    <PageButton pageNum = { num } onPageClicked = { onPageClicked }/>
-                </div>
-            )
+class pageNavigator extends Component<PropsType, StateType> {
+    constructor(props : PropsType) {
+        super(props);
+        this.state = {
+            pageList: new PageList(this.props.page),
         }
-        return <PageButton key={ num } pageNum = { num } onPageClicked = { onPageClicked }/>
-    });
+        this.onPageClicked = this.onPageClicked.bind(this);
+    }
 
-    return(
-        <>
-            {navigatorView}
-        </>
-    )
+    public onPageClicked = (pageNum : number) : void => {
+        this.props.onPageClicked(pageNum);
+        this.state.pageList?.onPageClicked(pageNum);
+    }
+
+    public render() : JSX.Element {
+        const navigatorView : Array<JSX.Element> = this.state.pageList.pages.map((num, idx) => {
+            if (idx > 0 && num - this.state.pageList.pages[idx-1] !== 1) {
+                return (
+                    <div key={ num }>
+                        <span className = 'ellipsisStyle'>...</span>
+                        <PageButton pageNum = { num } onPageClicked = { this.onPageClicked }/>
+                    </div>
+                )
+            }
+            return <PageButton key={ num } pageNum = { num } onPageClicked = { this.onPageClicked }/>
+        });
+    
+        return(
+            <>
+                {navigatorView}
+            </>
+        )
+    }
 } 
 
-export default memo(pageNavigator, (prevProps: PropsType, props : PropsType) : boolean => {
-    return prevProps.pageList === props.pageList
-});
+export default pageNavigator;

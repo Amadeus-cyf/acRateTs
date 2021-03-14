@@ -19,7 +19,7 @@ class PageList {
         }
         this.pages.sort((first, second) => {
             return first - second;
-        });
+        }); 
     }    
 
     private init() : void {
@@ -27,7 +27,7 @@ class PageList {
             this.pages.push(i);
         }
         let mid : number = Math.floor(this.pageCount / 2);
-        for (let i = mid - 2; i <= mid + 2; i++) {
+        for (let i = Math.max(1, mid - 2); i <= Math.min(mid + 2, this.pageCount); i++) {
             this.pages.push(i);
         }
         for (let i = this.pageCount - 2; i <= this.pageCount; i++) {
